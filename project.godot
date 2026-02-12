@@ -14,3 +14,7 @@ config/name="Juego 2d"
 run/main_scene="uid://nj5xjeij4mbx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+collectibles=""

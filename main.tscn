@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://nj5xjeij4mbx"]
+[gd_scene load_steps=6 format=3 uid="uid://nj5xjeij4mbx"]
 
+[ext_resource type="Script" uid="uid://b6ymw6bypbbpn" path="res://scripts/logica_win.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ix7lexbp0ou0" path="res://Player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://g3rcp40x4vur" path="res://collectible.tscn" id="2_0xm2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(18, 20)
@@ -8,6 +10,7 @@ size = Vector2(18, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(305, 303)
@@ -39,3 +42,40 @@ scale = Vector2(1, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pared4"]
 shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Collectible" parent="." groups=["collectibles"] instance=ExtResource("2_0xm2m")]
+position = Vector2(721, 448)
+
+[node name="Collectible2" parent="." groups=["collectibles"] instance=ExtResource("2_0xm2m")]
+position = Vector2(935, 266)
+
+[node name="Collectible3" parent="." groups=["collectibles"] instance=ExtResource("2_0xm2m")]
+position = Vector2(604, 154)
+
+[node name="Collectible4" parent="." groups=["collectibles"] instance=ExtResource("2_0xm2m")]
+position = Vector2(259, 506)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 81.0
+offset_bottom = 24.0
+text = "Objetos: 0"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 92.0
+offset_bottom = 52.0
+text = "Tiempo: 0"
+
+[connection signal="collected" from="Collectible" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible2" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible3" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible4" to="." method="_on_collectible_collected"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
