@@ -74,8 +74,37 @@ offset_right = 92.0
 offset_bottom = 52.0
 text = "Tiempo: 0"
 
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="GameOverUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverUI/Panel"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 287.0
+offset_right = 626.0
+offset_bottom = 310.0
+text = "Resultado:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GameOverUI/Panel"]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 357.0
+offset_right = 619.0
+offset_bottom = 388.0
+text = "Reiniciar"
+
 [connection signal="collected" from="Collectible" to="." method="_on_collectible_collected"]
 [connection signal="collected" from="Collectible2" to="." method="_on_collectible_collected"]
 [connection signal="collected" from="Collectible3" to="." method="_on_collectible_collected"]
 [connection signal="collected" from="Collectible4" to="." method="_on_collectible_collected"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOverUI/Panel/Button" to="." method="_on_button_pressed"]

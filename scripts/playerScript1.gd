@@ -4,6 +4,9 @@ extends CharacterBody2D
 
 
 func _physics_process(_delta) -> void:
+	if get_parent().game_state != get_parent().GameState.PLAYING:
+		return
+	
 	var direction = Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_right"):
